@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+  
+         form
+      {
+      display: flex;
+      flex-direction: column ;
+      align-items: center;
+      gap: 15px;
+      }
+      
+      h1{
+         margin-left: 150px;
+         color: brown;
+      }
+  span{
+   display: none;
+   /* display: block; */
+  }
+  .button{
+   background-color: red;
+   margin-left: 00px;
+ 
+  }
+  
+    </style>
+</head>
+<body>
+   <h1>
+      Enter the details to go next page 
+   </h1>
+<form action="">
+<input type="text" placeholder="User name">
+<span>Please fill the user name</span>
+<span> user name already taken</span>
+<input type="text" placeholder="Password">
+<span>Please fill the Password</span>
+<input type="text" placeholder="enter your mail@gmail.com">
+<span>enter the mail</span>
+<input type="tel" placeholder="Phnumber">
+<span>enter the ph no</span>
+<input type="submit">
+<p>proceed to next page:</p>
+<button>SIGN IN</button>
+</form>
+   <script>
+      var f=document.forms;
+      var span=document.getElementsByTagName("span")
+      var but=document.getElementsByTagName("button")
+      var arr=[];
+      f[0].addEventListener("submit",function(e){
+  
+e.preventDefault()
+ obj={
+   username:e.target[0].value,
+   password:e.target[1].value,
+   mail:e.target[2].value,
+   phonenumber:e.target[3].value,
+}
+if(obj.username.length==0){
+span[0].style.display="inline"
+span[0].style.color="red"
+f[0][0].style.border="2px solid red"
+
+}
+if(obj.password.length==0){
+span[2].style.display="inline"
+span[2].style.color="red"
+f[0][1].style.border="2px solid red"
+
+}
+if(obj.mail.length==0){
+span[3].style.display="inline"
+span[3].style.color="red"
+f[0][2].style.border="2px solid red"
+
+}
+
+if(obj.phonenumber.length==0){
+span[4].style.display="inline"
+span[4].style.color="red"
+f[0][3].style.border="2px solid red"
+
+}
+
+for(i=0;i<arr.length;i++){
+   if(obj.username==arr[i].username){
+span[1].style.display="inline"
+span[1].style.color="blue"
+f[0][0].style.border="2px solid purple"
+}
+ }
+arr.push(obj)
+window.localStorage.setItem("users",JSON.stringify(arr))
+e.target[0].value="";
+e.target[1].value="";
+e.target[2].value="";
+e.target[3].value="";
+window.location.setItem("./sign.html")
+});
+
+
+
+
+   </script>
+</body>
+</html>

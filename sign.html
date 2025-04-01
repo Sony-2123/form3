@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      form
+      {
+      display: flex;
+      flex-direction: column ;
+      align-items: center;
+      gap: 15px;
+      }
+      h1{
+        text-align: center;
+        font-size: 50px;
+        color:blue;
+      }
+      button{
+         margin-left: 330px;
+      }
+      span{
+display:none;
+
+      }
+      
+    </style>
+</head>
+<body>
+   <h1>
+    Registration Form
+   </h1>
+<form action="">
+<input type="text" placeholder="username">
+<span>enter the user name</span>
+<input type="text" placeholder="Password">
+<span>enter the Password</span>
+<button>SUBMIT</button>
+</form><br>
+  
+   <script>
+  
+ 
+  var f=document.forms;
+      var span=document.getElementsByTagName("span")
+      var but=document.getElementsByTagName("button")
+      var arr=[];
+      f[0].addEventListener("submit",function(e){
+  
+e.preventDefault()
+ obj={
+   username:e.target[0].value,
+   password:e.target[1].value,
+
+ }
+ if(obj.username.length==0){
+span[0].style.display="inline"
+span[0].style.color="red"
+f[0][0].style.border="2px solid red"
+
+}
+if(obj.password.length==0){
+span[2].style.display="inline"
+span[2].style.color="red"
+f[0][1].style.border="2px solid red"
+
+}
+
+for(i=0;i<arr.length;i++){
+   if(obj.username==arr[i].username){
+span[1].style.display="inline"
+span[1].style.color="blue"
+f[0][0].style.border="2px solid purple"
+}
+}
+arr.push(obj)
+window.localStorage.getItem("users",JSON.stringify(arr))
+e.target[0].value="";
+e.target[1].value="";
+
+      });
+
+
+
+
+   </script>
+</body>
+</html>
